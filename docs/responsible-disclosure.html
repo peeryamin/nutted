@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsible Disclosure (Draft) — BugSeek AI</title>
+<style>
+:root{--ink:#0A0F1E;--panel:#131B2E;--mint:#34D399;--mint-lt:#5EEAD4;
+--amber:#FBBF24;--body:#CBD5E1;--slate:#64748B;--red:#F87171}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--body);
+font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7;font-size:16.5px}
+.wrap{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+a{color:var(--mint-lt)}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;color:#fff;line-height:1.25;letter-spacing:-.01em}
+h1{font-size:2.1rem;border-bottom:2px solid rgba(52,211,153,.35);padding-bottom:.4em}
+h2{font-size:1.45rem;margin-top:2.2em}
+h3{font-size:1.15rem}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--mint-lt);font-size:.9em}
+pre{background:#070b16;border:1px solid rgba(148,163,184,.2);border-radius:10px;padding:16px;overflow-x:auto}
+pre code{color:#a9f5d6}
+blockquote{border-left:4px solid var(--amber);background:rgba(251,191,36,.06);
+margin:1.5em 0;padding:12px 18px;border-radius:0 10px 10px 0}
+blockquote p{margin:.4em 0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.95rem;display:block;overflow-x:auto}
+th{text-align:left;color:var(--mint-lt);padding:10px 12px;border-bottom:2px solid rgba(52,211,153,.35);white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid rgba(148,163,184,.15);vertical-align:top}
+hr{border:none;border-top:1px solid rgba(148,163,184,.25);margin:2.5em 0}
+strong{color:#fff}
+.back{display:inline-block;margin-bottom:24px;color:var(--slate);text-decoration:none;font-size:.9rem}
+.back:hover{color:#fff}
+.docfoot{margin-top:3em;padding-top:1.5em;border-top:1px solid rgba(148,163,184,.2);color:var(--slate);font-size:.85rem}
+</style></head>
+<body><div class="wrap">
+<a class="back" href="../landing/index.html">← BugSeek AI</a>
+<h1>BugSeek AI — Responsible Disclosure Policy</h1>
+<blockquote><p><strong>DRAFT — requires review by a qualified lawyer before publication.</strong> This policy covers (a) how *users of BugSeek AI* should disclose vulnerabilities they find, and (b) how *external researchers* can report vulnerabilities in BugSeek AI itself.</p></blockquote>
+<hr>
+<h2>Part A — For BugSeek AI users: disclosing what you find</h2>
+<p>If BugSeek AI helps you discover a vulnerability in a third-party system:</p>
+<ol><li><strong>Check authorization first.</strong> Only test and report within a scope you are authorized for (bug bounty program, contract, or your own systems). See Terms of Service §2.</li><li><strong>Do not exploit beyond proof.</strong> Validate with the minimum proof-of-concept needed to demonstrate impact. Do not access, modify, or delete data beyond what the program rules allow. Do not pivot to out-of-scope systems.</li><li><strong>Report through the owner&#x27;s channel.</strong> Use the bug bounty platform&#x27;s submission flow (HackerOne, Bugcrowd, Immunefi) or the vendor&#x27;s published security contact. BugSeek AI formats the draft — <strong>you</strong> review and submit it.</li><li><strong>Protect sensitive data.</strong> Redact credentials, tokens, and personal data from reports and evidence. Findings describe the vulnerability; they don&#x27;t reproduce the loot.</li><li><strong>Give the owner time.</strong> Follow the program&#x27;s disclosure timeline. Do not publicly disclose before the owner has had a reasonable opportunity to remediate (programs typically specify 30–90 days).</li><li><strong>Traps are not trophies.</strong> If BugSeek flags a finding as a likely honeypot, do not submit it as a genuine vulnerability — and do not attempt to &quot;test&quot; the trap operator&#x27;s infrastructure in retaliation.</li></ol>
+<p><strong>Safe-harbor commitment to our users:</strong> BugSeek AI will not terminate your account or share your scan data with third parties *solely* because you conducted authorized testing in good faith and complied with this policy and our Terms. (This is a policy commitment, not legal immunity — only the target owner or a court can grant that.)</p>
+<hr>
+<h2>Part B — For external researchers: reporting vulnerabilities in BugSeek AI</h2>
+<p>Found a security issue in BugSeek AI itself (the extension, the backend API, or our infrastructure)? We want to hear from you.</p>
+<h3>Scope</h3>
+<ul><li>In scope: <code>*.bugseek.ai</code> production hosts, the published Chrome extension (current version), the public API documented for your tier.</li><li>Out of scope: third-party services we integrate with, social engineering of our team or users, denial-of-service testing, spam.</li></ul>
+<h3>Rules of engagement</h3>
+<ul><li>Test only in-scope systems, with minimal, non-destructive proof-of-concepts.</li><li>Do not access other users&#x27; data. If you accidentally do, stop immediately and tell us.</li><li>Do not publicly disclose before we&#x27;ve had <strong>90 days</strong> to remediate (we&#x27;ll keep you updated on progress).</li><li>No automated bulk scanning that degrades the service.</li></ul>
+<h3>Safe harbor</h3>
+<p><strong>We will not pursue legal action</strong> against researchers who follow this policy in good faith, and we will advocate to any affected third party that your activity was authorized research under this policy. (Criminal law varies by jurisdiction; this is our commitment, not a guarantee about how authorities act.)</p>
+<h3>What to include in your report</h3>
+<p>Use this template:</p>
+<pre><code>
+Title: [short, specific]
+Severity: [your assessment + CVSS vector if known]
+Scope: [exact host / extension version / endpoint]
+Description: [what&#x27;s wrong and why it matters]
+Steps to reproduce:
+  1.
+  2.
+  3.
+Impact: [what an attacker could do]
+Suggested remediation: [optional]
+Contact: [how we reach you — PGP key optional]
+Attachments: [screenshots / PoC code — redact any sensitive data]
+</code></pre>
+<h3>Contact</h3>
+<ul><li>Security reports: <strong>[security@bugseek.ai — TO BE CREATED]</strong></li><li>Expected response: acknowledgment within <strong>3 business days</strong>; triage update within <strong>10 business days</strong>.</li><li>We do not currently operate a paid bounty program. We will credit researchers (with permission) in release notes and maintain a public hall of thanks.</li></ul>
+<hr>
+<h2>Part C — Vulnerability handling commitments (our side)</h2>
+<ol><li>Every in-scope report gets a human triage owner.</li><li>Critical issues in the extension or API: patch target <strong>14 days</strong>; the extension update is pushed through the Chrome Web Store immediately on release.</li><li>We publish a brief postmortem for critical issues after remediation (no researcher PII without consent).</li></ol>
+<hr>
+<p>*Draft prepared October 2026. Publish only after legal review and after the security@ contact exists.*</p>
+<p class="docfoot">BugSeek AI · Draft document — the Markdown source is canonical. Requires review before public use where noted.</p>
+</div></body></html>

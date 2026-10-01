@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BugSeek AI — The security researcher in your browser</title>
+<meta name="description" content="AI-powered security reconnaissance for bug bounty hunters. Passive recon in one click, guided active testing with your authorization, platform-ready reports.">
+<link rel="icon" type="image/png" sizes="128x128" href="assets/logo-128.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="BugSeek AI home">
+      <img src="assets/logo-128.png" alt="" width="32" height="32">
+      <span>BugSeek <em>AI</em></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#honeypot">Honeypot detection</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#pricing">Get early access</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="kicker">AI-powered recon for bug bounty hunters</p>
+        <h1>The security researcher in your browser.</h1>
+        <p class="lede">BugSeek AI lives in your Chrome toolbar. One click runs passive reconnaissance on the page you already have open. When you're authorized, its guided agent helps you test deeper — and exports a report your bounty platform will actually accept.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#pricing">Start free — no card required</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <ul class="hero-notes">
+          <li>Passive recon sends no attack traffic</li>
+          <li>Active testing only on targets you confirm you're authorized to test</li>
+          <li>You submit every report — BugSeek formats, you click send</li>
+        </ul>
+      </div>
+      <div class="hero-visual" aria-label="Illustrative product mockup">
+        <div class="browser">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">target-app.example — BugSeek scan</span></div>
+          <div class="finding">
+            <div class="finding-head">
+              <span class="sev sev-high">High</span>
+              <span class="finding-title">Reflected XSS in <code>q</code> parameter</span>
+            </div>
+            <div class="finding-meta"><span>CVSS 8.2</span><span>CWE-79</span><span class="trap">Trap probability: 4% — looks real</span></div>
+            <pre class="finding-evidence">GET /search?q=&lt;script&gt;…&lt;/script&gt;
+→ payload reflected unencoded in response body</pre>
+            <div class="finding-actions">
+              <span class="btn btn-primary btn-sm btn-static">Export for HackerOne</span>
+              <span class="btn btn-ghost btn-sm btn-static">Export for Bugcrowd</span>
+            </div>
+          </div>
+          <div class="finding finding-dim">
+            <div class="finding-head">
+              <span class="sev sev-amber">Review</span>
+              <span class="finding-title">Possible honeypot — login form too eager</span>
+            </div>
+            <div class="finding-meta"><span>Trap probability: 78%</span><span>excluded from report draft</span></div>
+          </div>
+          <p class="mockup-caption">Illustrative mockup — demo data shown on an intentionally vulnerable test app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM FORMATS -->
+  <section class="strip">
+    <div class="wrap">
+      <p class="strip-label">Report formats built for the platforms you submit to</p>
+      <p class="strip-platforms">HackerOne <span>·</span> Bugcrowd <span>·</span> Immunefi</p>
+      <p class="strip-fine">CVSS + CWE fields, Bugcrowd VRT mapping, and PoC-evidence checklists — formatted for you, submitted by you. No platform accepts automated bulk submission, and neither do we.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="section">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="section-lede">Three steps. The browser you already use, the target you already have open.</p>
+      <ol class="steps">
+        <li>
+          <span class="step-n">1</span>
+          <h3>Open the target, confirm scope</h3>
+          <p>Tell BugSeek which program and scope you're working under. Out-of-scope hosts and endpoints are excluded before anything runs — scope is enforced, not suggested.</p>
+        </li>
+        <li>
+          <span class="step-n">2</span>
+          <h3>Scan</h3>
+          <p>Passive recon runs instantly: tech fingerprinting, security headers, cookie audit, JS secret scanning, DOM analysis. With your explicit authorization, the guided agent plans and executes active tests — XSS, IDOR, CORS, auth issues, GraphQL — with confirmed findings marked as such and the rest surfaced as review hints, not scanner guesses.</p>
+        </li>
+        <li>
+          <span class="step-n">3</span>
+          <h3>Review &amp; export</h3>
+          <p>Findings arrive with severity, CVSS, evidence, and a trap-probability score. Export a platform-ready report draft, review it, and submit it yourself. Human judgment stays in the loop — platforms require it.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- FEATURES: PASSIVE VS ACTIVE -->
+  <section id="features" class="section section-alt">
+    <div class="wrap">
+      <h2>Passive recon now. Guided active testing when you're authorized.</h2>
+      <p class="section-lede">Phase 1 ships passive reconnaissance — the part that's always safe. Active testing arrives in Phase 2, gated behind explicit authorization.</p>
+      <div class="cols">
+        <div class="card">
+          <h3><span class="pill pill-mint">Phase 1 · Available</span> Passive reconnaissance</h3>
+          <ul class="check">
+            <li>Technology fingerprinting from headers &amp; DOM</li>
+            <li>Security header audit (OWASP baseline)</li>
+            <li>Cookie audit — flags, session tokens, scope</li>
+            <li>JavaScript secret &amp; API-key scanning</li>
+            <li>DOM analysis — forms, inputs, hidden fields, comments</li>
+            <li>Markdown reports with severity tags</li>
+          </ul>
+          <p class="card-fine">Runs entirely in the browser. No attack traffic, no backend needed.</p>
+        </div>
+        <div class="card">
+          <h3><span class="pill pill-amber">Phase 2 · In build</span> Guided active testing</h3>
+          <ul class="check">
+            <li>AI agent plans tests from recon context</li>
+            <li>XSS, IDOR, CORS, auth issues, GraphQL, API discovery</li>
+            <li>Confirmed findings marked as such; the rest are review hints</li>
+            <li>Honeypot &amp; trap detection on every finding</li>
+            <li>Rate-limited by design — never DoS-like traffic</li>
+            <li>PDF/DOCX reports with CVSS scoring</li>
+          </ul>
+          <p class="card-fine">Requires explicit authorization confirmation. Agent logic runs in our backend API — Chrome Web Store policy keeps executable logic out of remote code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONEYPOT DIFFERENTIATOR -->
+  <section id="honeypot" class="section">
+    <div class="wrap trap-grid">
+      <div>
+        <p class="kicker kicker-amber">BugSeek-only</p>
+        <h2>Traps are the tax on automation. We detect them.</h2>
+        <p class="section-lede">The easier a finding looks, the more suspicious you should be. BugSeek scores every finding for trap probability — canary tokens, too-easy reflections, behavioral anomalies, known decoy signatures — so you don't burn a submission (or your reputation) on a honeypot.</p>
+        <ul class="check">
+          <li>Multi-signal suspicion scoring on every finding</li>
+          <li>High-trap findings flagged, quarantined from report drafts</li>
+          <li>Contextual severity: a finding on a payment endpoint isn't the same as one on a demo page</li>
+        </ul>
+      </div>
+      <div class="card trap-card" aria-label="Trap detection example">
+        <p class="trap-title">⚑ Trap analysis</p>
+        <dl>
+          <div><dt>Finding</dt><dd>SQL error message in <code>/debug</code></dd></div>
+          <div><dt>Trap probability</dt><dd><strong class="amber">82% — likely decoy</strong></dd></div>
+          <div><dt>Signals</dt><dd>Error string matches known canary set · endpoint absent from JS bundles · response time unnaturally uniform</dd></div>
+          <div><dt>Action</dt><dd>Excluded from report draft. Logged for your review.</dd></div>
+        </dl>
+        <p class="mockup-caption">Illustrative example.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONEST POSITIONING -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <h2>Why a browser extension?</h2>
+      <p class="section-lede">Serious autonomous pentesting already exists — we're not pretending it doesn't. Strix (~66k GitHub stars) is the benchmark for open-source agent pentesting; XBOW and Pentera are $1B+ companies in the enterprise lane; Burp Suite Pro ($449/yr) remains the expert's workbench. BugSeek doesn't try to out-agent them. It meets the individual hunter where the target already is: the browser.</p>
+      <div class="cols cols-3">
+        <div class="card"><h3>Zero setup</h3><p>No Docker, no LLM keys, no CLI. Install the extension, open the target, scan. The hunters who find the most bugs aren't always the ones who enjoy configuring tooling.</p></div>
+        <div class="card"><h3>Hunter workflow, not dev workflow</h3><p>Scope confirmation → scan → platform-ready report. Not compliance PDFs for auditors — HackerOne fields, Bugcrowd VRT mapping, PoC evidence checklists.</p></div>
+        <div class="card"><h3>Trap detection</h3><p>No major agent we evaluated advertises honeypot or canary detection. Automation without it is a reputation risk; we built it in from Phase 2.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="section">
+    <div class="wrap">
+      <h2>Pricing that respects how hunters actually work</h2>
+      <p class="section-lede">Metered by scan credits, not "unlimited" promises. Passive scans are cheap; guided agent scans cost real model compute — so we price them honestly instead of hiding it.</p>
+      <div class="price-grid">
+        <div class="card price">
+          <h3>Scout</h3>
+          <p class="price-n">$0<small>/mo</small></p>
+          <p class="price-blurb">Learn the ropes on passive recon.</p>
+          <ul class="check">
+            <li>50 scan credits / month</li>
+            <li>Passive recon only (1 credit / scan)</li>
+            <li>Markdown reports</li>
+            <li>Community support</li>
+          </ul>
+          <a class="btn btn-ghost" href="#faq">Start free</a>
+        </div>
+        <div class="card price price-hot">
+          <p class="pill pill-mint">Most popular</p>
+          <h3>Hunter</h3>
+          <p class="price-n">$29<small>/mo</small></p>
+          <p class="price-blurb">For active bounty hunters. Less than a Burp Pro license.</p>
+          <ul class="check">
+            <li>300 scan credits / month</li>
+            <li>Guided active testing (25 credits / agent scan)</li>
+            <li>Honeypot detection on every finding</li>
+            <li>Platform-ready reports (H1 / Bugcrowd / Immunefi)</li>
+            <li>Scan history &amp; PDF/DOCX export</li>
+          </ul>
+          <a class="btn btn-primary" href="#faq">Get early access</a>
+        </div>
+        <div class="card price">
+          <h3>Pro</h3>
+          <p class="price-n">$99<small>/mo</small></p>
+          <p class="price-blurb">For freelancers &amp; consultants expensing their stack.</p>
+          <ul class="check">
+            <li>1,500 scan credits / month</li>
+            <li>Everything in Hunter</li>
+            <li>API access &amp; shared workspaces</li>
+            <li>Priority agent queue</li>
+            <li>White-label reports</li>
+          </ul>
+          <a class="btn btn-ghost" href="#faq">Talk to us</a>
+        </div>
+        <div class="card price">
+          <h3>Enterprise</h3>
+          <p class="price-n">Custom</p>
+          <p class="price-blurb">Security teams &amp; continuous validation.</p>
+          <ul class="check">
+            <li>Custom credit pools &amp; rate limits</li>
+            <li>SSO, audit logs, compliance reports</li>
+            <li>Self-hosted agent option</li>
+            <li>Dedicated support &amp; SLA</li>
+          </ul>
+          <a class="btn btn-ghost" href="#faq">Contact us</a>
+        </div>
+      </div>
+      <p class="strip-fine">1 credit = one passive recon scan · 25 credits = one guided active agent scan · unused credits don't roll over (fair-use policy applies)</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section-alt">
+    <div class="wrap faq-wrap">
+      <h2>Questions hunters actually ask</h2>
+      <details open>
+        <summary>Is this legal? Can I point it at any website?</summary>
+        <p><strong>No — and BugSeek won't let you pretend otherwise.</strong> Passive recon only analyzes what the page already shows your browser. Active testing requires you to explicitly confirm authorization: a bug bounty program scope, a pentest contract, or a target you own. Out-of-scope hosts are blocked before any test runs. Unauthorized access is a crime in most jurisdictions (including under India's IT Act, 2000 §66). Our <a href="../docs/terms-of-service.html">Terms of Service</a> and <a href="../docs/responsible-disclosure.html">Responsible Disclosure policy</a> spell this out — read them.</p>
+      </details>
+      <details>
+        <summary>Does BugSeek submit reports to HackerOne/Bugcrowd automatically?</summary>
+        <p>No. No bounty platform supports automated report submission, and bulk automation risks account penalties. BugSeek generates a fully formatted draft — title, severity/CVSS or VRT category, weakness, steps to reproduce, impact, PoC evidence checklist — and <strong>you</strong> review and submit it. That's a deliberate design decision, not a missing feature.</p>
+      </details>
+      <details>
+        <summary>What data leaves my machine?</summary>
+        <p>Passive recon runs locally in the extension. When you run a guided agent scan, the page context needed for testing is sent to our backend API over TLS — never credentials, cookies' secret values, or PII found during testing. Findings reference the vulnerability; they don't reproduce sensitive data. See the ToS for the full data-handling commitments.</p>
+      </details>
+      <details>
+        <summary>How is this different from Burp Suite / Nuclei / Strix?</summary>
+        <p>Burp Pro ($449/yr) is the expert's proxy workbench — powerful, steep learning curve, desktop-bound. Nuclei is the gold standard for signature-based known-vuln scanning with ~12k community templates. Strix is the benchmark open-source autonomous pentest agent (~66k stars) — but it's a developer-first CLI. BugSeek is none of those: it's a <strong>browser-native hunter workflow</strong> — zero setup, scope-first, trap-aware, with reports shaped for bounty platforms instead of compliance auditors.</p>
+      </details>
+      <details>
+        <summary>Will it be on the Chrome Web Store?</summary>
+        <p>That's the plan for the passive-recon Phase 1 build — passive analysis extensions (like Wappalyzer) are demonstrably publishable. Active testing is a policy grey zone we're navigating carefully: agent logic lives in our backend API (which Chrome's Manifest V3 remote-code rules explicitly allow), and active features stay behind an authorization-gated flow. If the store path closes, we'll distribute via direct install — the extension is built to work either way.</p>
+      </details>
+      <details>
+        <summary>Is BugSeek open source?</summary>
+        <p>We're still deciding — it's one of the biggest strategic questions we have. The case for open-sourcing the extension client (à la Strix's Apache-2.0 playbook) is real: trust, distribution, community contributions. The case against is that our moat — the agent, honeypot models, and report intelligence — needs protection while we're small. Our current thinking is documented in the <a href="../docs/business-plan.html">business plan</a>; whatever we choose, the free tier stays genuinely useful.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta">
+    <div class="wrap">
+      <h2>Stop context-switching. Start finding.</h2>
+      <p class="section-lede">Join the early-access list. Phase 1 (passive recon) is built — help us aim Phase 2 at the bugs you actually chase.</p>
+      <a class="btn btn-primary btn-lg" href="#pricing">Get early access</a>
+      <p class="strip-fine">No card required for Scout. Demos run on intentionally vulnerable apps (OWASP Juice Shop, DVWA) — never on targets you don't own.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="brand"><img src="assets/logo-128.png" alt="" width="24" height="24"> <span>BugSeek <em>AI</em></span></p>
+      <p class="fine">The security researcher in your browser.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="../docs/terms-of-service.html">Terms of Service (draft)</a>
+      <a href="../docs/responsible-disclosure.html">Responsible Disclosure (draft)</a>
+      <a href="../docs/business-plan.html">Business plan</a>
+      <a href="../docs/pitch-deck.html">Pitch deck</a>
+    </nav>
+    <p class="fine">© 2026 BugSeek AI. Test only targets you're authorized to test.<br>Draft legal documents — require review by a qualified lawyer before use.</p>
+  </div>
+</footer>
+
+</body>
+</html>

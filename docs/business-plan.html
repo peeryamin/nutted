@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BugSeek AI — Business Plan — BugSeek AI</title>
+<style>
+:root{--ink:#0A0F1E;--panel:#131B2E;--mint:#34D399;--mint-lt:#5EEAD4;
+--amber:#FBBF24;--body:#CBD5E1;--slate:#64748B;--red:#F87171}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--body);
+font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.7;font-size:16.5px}
+.wrap{max-width:860px;margin:0 auto;padding:48px 24px 80px}
+a{color:var(--mint-lt)}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;color:#fff;line-height:1.25;letter-spacing:-.01em}
+h1{font-size:2.1rem;border-bottom:2px solid rgba(52,211,153,.35);padding-bottom:.4em}
+h2{font-size:1.45rem;margin-top:2.2em}
+h3{font-size:1.15rem}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--mint-lt);font-size:.9em}
+pre{background:#070b16;border:1px solid rgba(148,163,184,.2);border-radius:10px;padding:16px;overflow-x:auto}
+pre code{color:#a9f5d6}
+blockquote{border-left:4px solid var(--amber);background:rgba(251,191,36,.06);
+margin:1.5em 0;padding:12px 18px;border-radius:0 10px 10px 0}
+blockquote p{margin:.4em 0}
+table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:.95rem;display:block;overflow-x:auto}
+th{text-align:left;color:var(--mint-lt);padding:10px 12px;border-bottom:2px solid rgba(52,211,153,.35);white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid rgba(148,163,184,.15);vertical-align:top}
+hr{border:none;border-top:1px solid rgba(148,163,184,.25);margin:2.5em 0}
+strong{color:#fff}
+.back{display:inline-block;margin-bottom:24px;color:var(--slate);text-decoration:none;font-size:.9rem}
+.back:hover{color:#fff}
+.docfoot{margin-top:3em;padding-top:1.5em;border-top:1px solid rgba(148,163,184,.2);color:var(--slate);font-size:.85rem}
+</style></head>
+<body><div class="wrap">
+<a class="back" href="../landing/index.html">← BugSeek AI</a>
+<h1>BugSeek AI — Business Plan</h1>
+<p><strong>Version:</strong> 1.0 · October 2026 · DRAFT (internal) <strong>Grounding:</strong> every market figure below comes from <code>docs/market-research.md</code> (Worker 1, Oct 2026) or the product plan. Figures from the plan that the research corrected are flagged. No invented statistics.</p>
+<hr>
+<h2>1. Executive summary</h2>
+<p>BugSeek AI is a Chrome extension that puts an AI security researcher inside the hunter&#x27;s browser. Passive reconnaissance in one click (Phase 1, built); guided active testing with explicit authorization (Phase 2, in build); honeypot/trap detection and bounty-platform-ready reports as the differentiators nobody else owns.</p>
+<p><strong>The wedge (from research):</strong> do not compete as &quot;another autonomous pentesting agent&quot; — Strix (~66k stars), XBOW ($237M raised, $1B+), and Pentera ($250M raised, $1B+) own that sentence. BugSeek owns the <strong>browser-native hunter workflow</strong>: zero-setup UX, individual-hunter pricing, trap detection, and HackerOne/Bugcrowd/Immunefi-shaped reports.</p>
+<p><strong>Business model:</strong> freemium SaaS, metered by scan credits. Hunter $29/mo sits under a Burp Pro license ($449/yr ≈ $37/mo); Pro $99/mo for consultants; Enterprise custom.</p>
+<hr>
+<h2>2. Market (corrected figures)</h2>
+<p>The product plan&#x27;s &quot;platforms paid $300M+ in 2025&quot; conflates an annual figure with a lifetime figure. The defensible numbers, all sourced in <code>market-research.md</code> §2:</p>
+<table><thead><tr><th>Figure</th><th>Value</th><th>Source</th></tr></thead><tbody><tr><td>HackerOne payouts, 12 mo to Jun 2025</td><td><strong>$81M</strong> (+13% YoY)</td><td>HackerOne 9th Hacker-Powered Security Report</td></tr><tr><td>HackerOne cumulative lifetime payouts</td><td><strong>$300M+</strong> (crossed Mar 2025)</td><td>Infosecurity Magazine</td></tr><tr><td>Verifiable 2025 platform total (H1 $81M + Google VRP $17M + Microsoft ~$20M + Meta $4M + Bugcrowd/Immunefi undisclosed)</td><td><strong>≈ $130–150M</strong></td><td>Research brief §2</td></tr><tr><td>Researchers who earned ≥1 bounty</td><td>50,000+</td><td>HackerOne HPSR</td></tr><tr><td>Top-100 all-time earners&#x27; share</td><td>~$31.8M (~10% of lifetime) — brutal power law</td><td>HackerOne HPSR</td></tr><tr><td>Researchers using AI/automation</td><td>67%; 560+ autonomous-agent (&quot;hackbot&quot;) valid reports</td><td>HackerOne HPSR</td></tr><tr><td>AI-related vuln reports</td><td>+210% YoY; prompt-injection +540% YoY</td><td>HackerOne HPSR</td></tr></tbody></table>
+<p><strong>Investor-safe framing:</strong> *&quot;HackerOne alone has paid $300M+ lifetime — $81M in the last year, growing 13% YoY. The verifiable 2025 platform total is ~$130–150M, and AI-assisted hunting is the fastest-growing segment.&quot;*</p>
+<p><strong>Positioning opportunity:</strong> the power-law payout distribution (top 100 take ~10%) is the pitch — *&quot;help the other 49,900 earn.&quot;* BugSeek lowers the skill floor: guided testing + validated PoCs + platform-ready reports for hunters who aren&#x27;t Burp wizards yet.</p>
+<p><strong>TAM note:</strong> the plan estimates 500,000+ active hunters worldwide. Treat as a directional plan estimate (unverified by the research); projections below do not depend on it — they depend on bottom-up conversion math.</p>
+<hr>
+<h2>3. Business model — refined pricing (metered)</h2>
+<p>The research verdict: tiers are defensible, but <strong>&quot;unlimited scans&quot; must die</strong> — LLM agent calls are the marginal cost. Pricing is now credit-metered.</p>
+<p><strong>Scan credits:</strong> 1 credit = one passive recon scan · 25 credits = one guided active agent scan.</p>
+<table><thead><tr><th>Tier</th><th>Price</th><th>Credits/mo</th><th>Target</th><th>Key inclusions</th></tr></thead><tbody><tr><td><strong>Scout</strong></td><td>$0</td><td>50</td><td>Learners, top-of-funnel</td><td>Passive recon only, Markdown reports, community support</td></tr><tr><td><strong>Hunter</strong></td><td>$29/mo</td><td>300</td><td>Active solo hunters</td><td>Active agent testing, honeypot detection, platform-ready reports (H1/Bugcrowd/Immunefi), scan history, PDF/DOCX export</td></tr><tr><td><strong>Pro</strong></td><td>$99/mo</td><td>1,500</td><td>Freelancers, consultants</td><td>Everything in Hunter + API access, shared workspaces, priority agent queue, white-label reports</td></tr><tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Custom pools</td><td>Security teams</td><td>SSO, audit logs, compliance reports, self-hosted agent option, SLA</td></tr></tbody></table>
+<p>Overage: $5 per 100 credits (Hunter/Pro). Unused credits expire monthly (no rollover) — stated up front, standard fair-use.</p>
+<h3>3.1 LLM cost math (explicit assumptions)</h3>
+<table><thead><tr><th>Cost component</th><th>Assumption</th><th>Unit cost</th></tr></thead><tbody><tr><td>Passive scan</td><td>Rules engine in-extension (free) + cheap-model summary ≈ 4k in / 0.5k out tokens at ~$0.15/$0.60 per 1M</td><td><strong>≈ $0.01</strong></td></tr><tr><td>Active agent scan</td><td>Agentic loop (~40 turns ≈ 320k in / 60k out) on <code>gemini-3.8-flash</code> ($0.75/$3.75 intro) ≈ <strong>$0.47</strong>; with Pro-class escalation on low confidence only (<code>gemini-3.1-pro-preview</code> $2.00/$12.00) ≈ <strong>$0.72</strong> worst case</td><td><strong>≈ $0.65</strong></td></tr><tr><td>Tiered routing</td><td>Routine triage on cheap models; exploit reasoning on strong models (see AI-strategy doc)</td><td>margin lever</td></tr></tbody></table>
+<p><strong>Per-tier unit economics:</strong></p>
+<table><thead><tr><th>Tier</th><th>Revenue</th><th>Typical usage assumption</th><th>Est. COGS</th><th>Gross margin</th></tr></thead><tbody><tr><td>Scout</td><td>$0</td><td>30 passive scans</td><td>$0.30</td><td>acquisition cost</td></tr><tr><td>Hunter</td><td>$29</td><td>120 passive + 4 active</td><td>$1.20 + $2.60 = <strong>$3.80</strong></td><td><strong>≈ 87%</strong></td></tr><tr><td>Hunter (worst case: all credits → active)</td><td>$29</td><td>12 active scans</td><td>$7.80</td><td>≈ 73%</td></tr><tr><td>Pro</td><td>$99</td><td>400 passive + 20 active</td><td>$4.00 + $13.00 = <strong>$17.00</strong></td><td><strong>≈ 83%</strong></td></tr><tr><td>Pro (worst case)</td><td>$99</td><td>60 active scans</td><td>$39.00</td><td>≈ 61%</td></tr></tbody></table>
+<p>Even at adversarial full utilization, gross margins stay above 60%. The meter is the moat around the cost base: no &quot;unlimited&quot; tier can be arbitraged into a compute firehose. Guardrails that protect margin further: per-scan token budgets, cheap-model-first routing, caching of recon summaries, and rate limits (also a legal requirement — §8 of the plan).</p>
+<hr>
+<h2>4. Go-to-market</h2>
+<p>Sequenced for a student budget — community and content first, paid last:</p>
+<ol><li><strong>Product Hunt launch</strong> (Phase 3, with CWS listing) — security tools overperform there; aim top-5.</li><li><strong>Hunter communities</strong> — r/bugbounty, r/netsec, infosec Twitter/X, Discord servers. Lead with useful artifacts (trap-detection writeups), not ads.</li><li><strong>YouTube demos</strong> — BugSeek finding real bugs on intentionally vulnerable apps (OWASP Juice Shop, DVWA, HackTheBox). Never on unauthorized targets; say so on-screen.</li><li><strong>Content marketing</strong> — &quot;How BugSeek found X&quot; teardowns, honeypot-detection research notes, bounty-economics explainers using the corrected market numbers.</li><li><strong>Platform-adjacent positioning</strong> — report templates for HackerOne (public Hacker API v1 for scope ingestion), Bugcrowd (VRT-mapped), Immunefi (PoC-mandatory format). No auto-submission, ever — format, human submits.</li><li><strong>Open-source funnel</strong> (see §6) — the extension client as the acquisition engine.</li></ol>
+<p><strong>CAC assumption:</strong> ~$25 blended (community/PLG-led). Payback on Hunter: &lt;1 month at 87% margin.</p>
+<hr>
+<h2>5. Projections (conservative — assumptions explicit)</h2>
+<p><strong>Assumptions:</strong> 5% free→paid conversion · 3% monthly logo churn · $25 blended CAC · pricing as §3 · Enterprise ACV $6k (Y1 pilots) → $12k (Y2).</p>
+<table><thead><tr><th></th><th>End of Year 1</th><th>End of Year 2</th></tr></thead><tbody><tr><td>Free (Scout) users</td><td>3,000</td><td>15,000</td></tr><tr><td>Hunter ($29)</td><td>150</td><td>800</td></tr><tr><td>Pro ($99)</td><td>25</td><td>120</td></tr><tr><td>Enterprise</td><td>2 pilots</td><td>8</td></tr><tr><td>MRR (self-serve)</td><td>$6,825</td><td>$35,080</td></tr><tr><td><strong>ARR (incl. Enterprise)</strong></td><td><strong>≈ $94k</strong></td><td><strong>≈ $517k</strong></td></tr></tbody></table>
+<p>Y1 math: 150×$29 + 25×$99 = $4,350 + $2,475 = $6,825 MRR → $81.9k + 2×$6k pilots ≈ <strong>$94k ARR</strong>. Y2 math: 800×$29 + 120×$99 = $23,200 + $11,880 = $35,080 MRR → $421k + 8×$12k ≈ <strong>$517k ARR</strong>.</p>
+<p><strong>What has to be true:</strong> the Chrome Web Store listing survives review (plan risk: MEDIUM), Phase 2 agent validates PoCs at Strix&#x27;s bar (working exploits, not guesses), and trap detection demonstrably saves submissions. If CWS rejects active testing, the sideload path preserves the funnel at lower conversion — modeled as a 40% haircut to Y1 paid conversion in the downside case (≈$60k ARR).</p>
+<hr>
+<h2>6. The open-source question — recommendation</h2>
+<p><strong>Question:</strong> should BugSeek open-source the extension (Strix&#x27;s playbook: community, trust, distribution) while monetizing Cloud/Pro?</p>
+<h3>Tradeoffs</h3>
+<table><thead><tr><th></th><th>Open-source the extension client</th><th>Keep it closed</th></tr></thead><tbody><tr><td><strong>Distribution</strong></td><td>GitHub stars are the discovery engine in this category (Strix: ~66k in 14 months). Free, compounding top-of-funnel.</td><td>Paid/SEO/community grind only; slower.</td></tr><tr><td><strong>Trust</strong></td><td>Security tooling that runs in your browser *must* be inspectable. OSS is the trust shortcut (Strix&#x27;s &quot;nothing leaves your machine&quot; docs).</td><td>&quot;Trust our black box with your targets&quot; is a hard sell to hunters.</td></tr><tr><td><strong>Community</strong></td><td>Template/signature contributions (Nuclei&#x27;s 12k-template moat was community-built), bug reports, translations.</td><td>All R&amp;D on Peer&#x27;s shoulders.</td></tr><tr><td><strong>Moat risk</strong></td><td>Anyone can fork the client.</td><td>Code secrecy as (weak) moat.</td></tr><tr><td><strong>Monetization</strong></td><td>Proven: Strix OSS → Cloud → Enterprise funnel. Client is free; the backend agent, honeypot models, and report intelligence are the paid product.</td><td>Simpler licensing story, but no funnel.</td></tr></tbody></table>
+<p><strong>Recommendation: open-source the extension client under Apache 2.0; keep the backend proprietary.</strong></p>
+<p>Reasoning:</p>
+<ol><li><strong>The moat isn&#x27;t the client.</strong> Passive recon (DOM scanning, header checks, regex secret scanning) is commodity logic — Wappalyzer and Retire.js already publish equivalents. The defensible assets are the <strong>agent orchestration, honeypot-detection models, and the vulnerability-pattern data flywheel</strong> — all of which live in the backend API, which stays closed.</li><li><strong>Strix proved the playbook in this exact category.</strong> OSS → Cloud → Enterprise converted 66k stars into a managed business. BugSeek can run the same funnel one layer up (browser UX instead of CLI).</li><li><strong>Trust is existential for a browser security tool.</strong> Hunters will not install a closed-source extension that watches every page they visit. Apache 2.0 + &quot;passive recon runs locally, inspect it yourself&quot; dissolves the objection.</li><li><strong>It turns competitors into supply chain.</strong> The research notes BugSeek&#x27;s backend could run Strix or Nuclei as agent tools — an OSS client makes that composition natural and creditable.</li></ol>
+<h3>License implications</h3>
+<ul><li><strong>Apache 2.0 (recommended for the client):</strong> maximum adoption; permits commercial forks (which is fine — forks still point at *our* backend API for the paid features); patent grant; compatible with the ecosystem. This is Strix&#x27;s license — the market has already voted.</li><li><strong>AGPL:</strong> would force cloud-hosted forks to open-source — stronger copyleft, but it poisons community adoption (companies ban AGPL dependencies) and deters the contributors we want. Rejected.</li><li><strong>Source-available / BSL (e.g., &quot;no competing SaaS for 2 years&quot;):</strong> a middle path if a cloud copycat emerges. Keep in the back pocket; don&#x27;t lead with it — it reads as defensive before we have anything worth copying.</li><li><strong>Backend:</strong> proprietary, closed. No license needed — it&#x27;s a service, not distributed code. The API boundary is the moat line; document it as such in CONTRIBUTING.</li></ul>
+<p><strong>Sequencing:</strong> open-source at Phase 3 (CWS listing + Product Hunt), not now — ship Phase 1 closed to iterate fast, then open the client as the launch event. Announce the license intent early (in README) so the community trusts the direction.</p>
+<hr>
+<h2>7. Roadmap &amp; milestones (from plan §7, research-adjusted)</h2>
+<ul><li><strong>Phase 1 (wks 1–2) — DONE:</strong> passive recon extension (MV3), popup UI, Markdown reports.</li><li><strong>Phase 2 (wks 3–4) — in build:</strong> backend API (auth, queue, agent), guided active testing, PoC validation, honeypot v1, PDF/DOCX + CVSS, scope/authorization gates.</li><li><strong>Phase 3 (mo 2–3):</strong> trap-detection v2, attack-chain reasoning, IDOR/auth/GraphQL, Stripe billing, platform report templates, <strong>CWS listing + Product Hunt + open-source the client</strong>.</li><li><strong>Phase 4 (mo 4+):</strong> pattern database from anonymized scan data, continuous monitoring, CI/CD action, SSO/audit/self-host, public API.</li></ul>
+<h2>8. Risks (honest)</h2>
+<ol><li><strong>Chrome Web Store review (MEDIUM).</strong> Active testing from an extension is a grey zone; MV3 remote-code rules are hard constraints. Mitigation: passive-only store build, authorization-gated active flow, backend-hosted agent logic, sideload fallback.</li><li><strong>Strix-class competition.</strong> We don&#x27;t out-agent them; we out-workflow them (browser UX, hunter reports, trap detection). If Strix ships a browser extension, the wedge narrows — speed matters.</li><li><strong>LLM cost overruns.</strong> Metered credits + tiered models + per-scan budgets; monitored weekly.</li><li><strong>Platform policy shifts.</strong> HackerOne/Bugcrowd/Immunefi could restrict tooling-assisted reports. Mitigation: human-submits design, valid-PoC-only output, responsible-disclosure posture.</li><li><strong>Legal exposure.</strong> A security tool is a liability without guardrails. Mitigation: authorization verification, scope enforcement, rate limiting, no sensitive-data exfiltration, draft ToS/disclosure policy (lawyer review required before launch).</li></ol>
+<hr>
+<p>*All market figures sourced from <code>docs/market-research.md</code> (Oct 2026). Pricing math uses the assumptions in §3.1 — revisit quarterly as model prices move.*</p>
+<p class="docfoot">BugSeek AI · Draft document — the Markdown source is canonical. Requires review before public use where noted.</p>
+</div></body></html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BugSeek AI</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">&#9670;</span>
+          <div>
+            <h1>BugSeek AI</h1>
+            <p class="subtitle">Passive recon &middot; Active testing</p>
+          </div>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist" aria-label="Scan mode">
+        <button
+          id="tab-passive"
+          class="tab tab-selected"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="pane-passive"
+        >
+          Passive recon
+        </button>
+        <button
+          id="tab-active"
+          class="tab tab-warning"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="pane-active"
+        >
+          &#9888; Active testing
+        </button>
+      </nav>
+
+      <!-- ================= Passive recon (always available) ================= -->
+      <section id="pane-passive" role="tabpanel" aria-labelledby="tab-passive">
+        <section class="target-row">
+          <span class="label">Target</span>
+          <span id="target-url" class="target-url">…</span>
+        </section>
+
+        <div class="actions">
+          <button id="scan-btn" class="btn-primary" type="button">Scan this page</button>
+          <button id="download-btn" class="btn-secondary" type="button" disabled>
+            Download report (.md)
+          </button>
+        </div>
+
+        <div id="status" class="status" role="status"></div>
+        <div id="error" class="error" hidden></div>
+
+        <section id="results" class="results" hidden>
+          <div id="summary" class="summary"></div>
+          <div id="tech" class="tech"></div>
+          <div id="findings" class="findings"></div>
+        </section>
+
+        <p class="pane-note">
+          Passive scan only &mdash; no requests are sent beyond loading the
+          page&rsquo;s own public resources.
+        </p>
+      </section>
+
+      <!-- ================= Active testing (locked behind authorization) ================= -->
+      <section id="pane-active" role="tabpanel" aria-labelledby="tab-active" hidden>
+        <div class="active-warning" role="note">
+          <strong>&#9888; Active testing sends real requests to the target.</strong>
+          Only test targets you are authorized to test &mdash; a bug bounty
+          program, a pentest contract, or a target you own. Unauthorized
+          testing may be illegal.
+        </div>
+
+        <section class="target-row">
+          <span class="label">Target host</span>
+          <span id="active-host" class="target-url">…</span>
+        </section>
+
+        <div id="backend-status" class="backend-badge backend-unknown">Backend: checking…</div>
+        <div class="backend-key-row">
+          <label for="backend-api-key" class="label">Backend API key</label>
+          <input id="backend-api-key" type="password" placeholder="bs_… (optional — enables AI deepening & history)" autocomplete="off" spellcheck="false" />
+          <button id="backend-api-key-save" type="button">Save</button>
+        </div>
+
+        <!-- Authorization confirmation (shown when no record exists) -->
+        <form id="authz-form" class="authz-form" onsubmit="return false">
+          <h2>1. Confirm your authorization</h2>
+
+          <fieldset>
+            <legend>I am authorized via</legend>
+            <label class="radio">
+              <input type="radio" name="authz-type" value="bug-bounty" checked />
+              Bug bounty program
+            </label>
+            <label class="radio">
+              <input type="radio" name="authz-type" value="pentest-contract" />
+              Pentest contract
+            </label>
+            <label class="radio">
+              <input type="radio" name="authz-type" value="ownership" />
+              I own this target
+            </label>
+          </fieldset>
+
+          <label class="field">
+            <span>Program / contract name (optional)</span>
+            <input id="authz-program" type="text" placeholder="e.g. HackerOne program handle" />
+          </label>
+
+          <h2>2. Define the scope</h2>
+
+          <fieldset>
+            <legend>Include</legend>
+            <label class="radio">
+              <input type="radio" name="authz-scope" value="full-domain" checked />
+              This host and its subdomains
+            </label>
+            <label class="radio">
+              <input type="radio" name="authz-scope" value="subdomain" />
+              This host only
+            </label>
+            <label class="radio">
+              <input type="radio" name="authz-scope" value="page" />
+              This page only (no crawling)
+            </label>
+            <label class="check indent">
+              <input id="authz-subdomains" type="checkbox" checked />
+              Include subdomains
+            </label>
+          </fieldset>
+
+          <label class="field">
+            <span>Excluded hosts (one per line or comma-separated)</span>
+            <input id="authz-excluded-hosts" type="text" placeholder="e.g. status.example.com" />
+          </label>
+
+          <label class="field">
+            <span>Excluded paths (comma-separated prefixes)</span>
+            <input id="authz-excluded-paths" type="text" placeholder="e.g. /logout, /billing" />
+          </label>
+
+          <h2>3. Testing options</h2>
+
+          <label class="check">
+            <input id="authz-probes" type="checkbox" />
+            Also allow <strong>login-form testing</strong>: default-credential
+            probes and brute-force protection checks
+          </label>
+
+          <label class="field">
+            <span>Minimum gap between requests (ms, min 250)</span>
+            <input id="authz-ratelimit" type="number" value="1500" min="250" step="100" />
+          </label>
+
+          <label class="check confirm-check">
+            <input id="authz-confirm" type="checkbox" />
+            I confirm I have authorization to actively test this target and I
+            accept responsibility for this testing activity.
+          </label>
+
+          <div id="authz-error" class="error" hidden></div>
+
+          <button id="authz-save" class="btn-primary" type="button">
+            Save authorization &amp; unlock active testing
+          </button>
+        </form>
+
+        <!-- Authorized state -->
+        <div id="authz-authorized" class="authz-authorized" hidden>
+          <h2>Authorization on file</h2>
+          <div id="authz-summary"></div>
+          <label class="check">
+            <input id="active-deep-inspect" type="checkbox" />
+            <span>
+              <strong>Deep inspect</strong> &mdash; devtools-level capture:
+              full request/response bodies for this scan via the Chrome
+              DevTools protocol.
+              <span class="hint">Chrome shows a &ldquo;debugging this browser&rdquo; banner while attached. You&rsquo;ll be asked to grant the debugger permission once.</span>
+            </span>
+          </label>
+          <div class="actions">
+            <button id="active-run-btn" class="btn-danger" type="button">
+              Run active tests
+            </button>
+            <button id="swarm-run-btn" class="btn-primary" type="button" title="Deploy the backend AI swarm: a head agent plus specialist worker agents (Hunter plan, 25 credits)">
+              Run AI swarm
+            </button>
+            <button id="authz-revoke" class="btn-secondary" type="button">
+              Revoke
+            </button>
+          </div>
+          <div id="throttle-status" class="throttle" role="status" hidden></div>
+        </div>
+
+        <div id="active-status" class="status" role="status"></div>
+        <div id="active-error" class="error" hidden></div>
+
+        <section id="active-results" class="results" hidden>
+          <div id="active-stats" class="active-stats"></div>
+          <div id="active-chains"></div>
+          <div id="active-summary" class="summary"></div>
+          <div id="active-findings" class="findings"></div>
+          <div class="actions">
+            <button id="active-download-btn" class="btn-secondary" type="button" disabled>
+              Download report (.md)
+            </button>
+          </div>
+        </section>
+      </section>
+
+      <footer class="app-footer">
+        Only test targets you are authorized to test.
+      </footer>
+    </div>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>
